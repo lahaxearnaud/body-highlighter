@@ -1,5 +1,7 @@
 //@ts-nocheck (sometimes giving partial input object for easier testing)
 
+import { describe, expect, it } from 'vitest';
+
 import { ensure, fillIntensityColor, fillMuscleData, normalizeMuscle } from '../src/utils';
 import { IMuscleData, Muscle, MuscleType } from '../src/component/metadata';
 

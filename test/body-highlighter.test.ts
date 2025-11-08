@@ -1,3 +1,5 @@
+import { afterEach, describe, expect, it, vi } from 'vitest';
+
 import createBodyHighlighter, { BodyHighlighterInstance, MuscleType } from '../src';
 
 describe('createBodyHighlighter', () => {
@@ -18,7 +20,7 @@ describe('createBodyHighlighter', () => {
   });
 
   it('triggers callback when a muscle polygon is clicked', () => {
-    const onClick = jest.fn();
+    const onClick = vi.fn();
 
     instance = createBodyHighlighter({
       data: [{ name: 'Bench Press', muscles: [MuscleType.CHEST] }],
