@@ -25,11 +25,16 @@ const normalizeMuscleEntry = (value: Muscle | string): Muscle | undefined => {
     return undefined;
   }
 
+  const aliasTarget = MUSCLE_ALIAS_MAP[normalizedKey];
+  if (aliasTarget) {
+    return aliasTarget;
+  }
+
   if (KNOWN_MUSCLES.has(normalizedKey as Muscle)) {
     return normalizedKey as Muscle;
   }
 
-  return MUSCLE_ALIAS_MAP[normalizedKey];
+  return undefined;
 };
 
 export const normalizeMuscle = (value: Muscle | string): Muscle | undefined => {
