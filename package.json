@@ -15,7 +15,7 @@
     "build": "vite build",
     "test": "vitest",
     "lint": "tsc --noEmit",
-    "prepare": "husky install && npm run build",
+    "prepare": "husky install",
     "release": "semantic-release"
   },
   "prettier": {
