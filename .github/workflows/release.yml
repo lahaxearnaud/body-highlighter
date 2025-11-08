@@ -32,6 +32,9 @@ jobs:
           cache: npm
           registry-url: https://registry.npmjs.org
 
+      - name: Install
+        run: npm install
+
       - name: Install dependencies
         run: npx vitest run test
 
