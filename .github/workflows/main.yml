@@ -19,7 +19,7 @@ jobs:
           CI: true
 
       - name: Lint
-        run: npx lint
+        run: npm run lint
         env:
           CI: true
 
@@ -29,6 +29,6 @@ jobs:
           CI: true
 
       - name: Build
-        run: npx build
+        run: npm run build
         env:
           CI: true
