@@ -24,7 +24,7 @@ jobs:
           CI: true
 
       - name: Test
-        run: npx run test --coverage
+        run: npx vitest run test --coverage
         env:
           CI: true
 
