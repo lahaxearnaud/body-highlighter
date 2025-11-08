@@ -1,5 +1,3 @@
-import { CSSProperties } from 'react';
-
 export const MuscleType = {
   TRAPEZIUS: 'trapezius',
   UPPER_BACK: 'upper-back',
@@ -32,11 +30,11 @@ export const ModelType = {
   ANTERIOR: 'anterior',
 } as const;
 
-type ModelType = typeof ModelType[keyof typeof ModelType];
+export type ModelType = typeof ModelType[keyof typeof ModelType];
 
 export interface IExerciseData {
   name: string;
-  muscles: Muscle[];
+  muscles: Array<Muscle | string>;
   frequency?: number;
 }
 
@@ -50,12 +48,28 @@ export interface IMuscleStats {
   data: IMuscleData;
 }
 
-export interface IModelProps {
+export type StyleObject = Partial<Record<string, string | number | undefined>>;
+
+export interface BodyHighlighterOptions {
   bodyColor?: string;
   data?: IExerciseData[];
   highlightedColors?: string[];
-  onClick?: ((exercise: IMuscleStats) => void) | (() => void);
-  style?: CSSProperties;
-  svgStyle?: CSSProperties;
+  onClick?: (exercise: IMuscleStats) => void;
+  container?: HTMLElement | null;
+  wrapperClassName?: string;
+  style?: StyleObject;
+  svgStyle?: StyleObject;
   type?: ModelType;
+}
+
+export interface BodyHighlighterInstance {
+  element: HTMLElement;
+  /**
+   * Updates the highlighter with new options.
+   */
+  update: (options: Partial<BodyHighlighterOptions>) => void;
+  /**
+   * Removes DOM nodes and listeners created by the highlighter.
+   */
+  destroy: () => void;
 }

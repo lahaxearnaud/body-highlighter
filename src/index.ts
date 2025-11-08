@@ -1,2 +1,4 @@
 export * from './component/metadata';
-export { default } from './component/Model';
+export { createBodyHighlighter } from './component/BodyHighlighter';
+export { createBodyHighlighter as default } from './component/BodyHighlighter';
+export { normalizeMuscle } from './utils';

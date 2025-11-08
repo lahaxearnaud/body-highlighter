@@ -5,10 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Test Playground</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #0f172a;
+        color: #e2e8f0;
+      }
+
+      main {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+
+      h1 {
+        margin-top: 0;
+      }
+
+      .controls {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin: 1.5rem 0;
+      }
+
+      button {
+        background: #3b82f6;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      button:hover {
+        background: #2563eb;
+      }
+
+      pre {
+        background: rgba(15, 23, 42, 0.8);
+        border-radius: 12px;
+        padding: 1rem;
+        min-height: 3rem;
+        font-size: 0.9rem;
+        overflow-x: auto;
+      }
+
+      .models {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .model {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
   </head>
 
   <body>
-    <div id="root"></div>
-    <script src="./index.tsx" type="module"></script>
+    <main>
+      <h1>react-body-highlighter (vanilla example)</h1>
+      <p>Use the buttons below to mutate the activity data and see both views update.</p>
+      <div class="controls">
+        <button id="add-exercise">Add pull ups session</button>
+        <button id="reset">Reset data</button>
+      </div>
+      <pre id="log">Click a muscle to view its stats</pre>
+      <div class="models">
+        <div id="anterior-model" class="model"></div>
+        <div id="posterior-model" class="model"></div>
+      </div>
+    </main>
+    <script src="./index.ts" type="module"></script>
   </body>
 </html>

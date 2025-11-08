@@ -1,4 +1,4 @@
-import { ModelType, Muscle, IMuscleData } from '../component/metadata';
+import { ModelType, Muscle, MuscleType, IMuscleData } from '../component/metadata';
 
 export const DEFAULT_MUSCLE_DATA: Record<Muscle, IMuscleData> = {
   trapezius: { exercises: [], frequency: 0 },
@@ -24,6 +24,50 @@ export const DEFAULT_MUSCLE_DATA: Record<Muscle, IMuscleData> = {
   'left-soleus': { exercises: [], frequency: 0 },
   'right-soleus': { exercises: [], frequency: 0 },
 };
+
+export const MUSCLE_ALIAS_MAP: Record<string, Muscle> = {
+  trapezius: MuscleType.UPPER_BACK,
+  'upper trapezius': MuscleType.UPPER_BACK,
+  rhomboids: MuscleType.UPPER_BACK,
+  'levator scapulae': MuscleType.UPPER_BACK,
+  'erector spinae': MuscleType.LOWER_BACK,
+  'pectoralis major': MuscleType.CHEST,
+  'rectus abdominis': MuscleType.ABS,
+  'transverse abdominis': MuscleType.ABS,
+  obliques: MuscleType.OBLIQUES,
+  'serratus anterior': MuscleType.ABS,
+  'anterior deltoids': MuscleType.FRONT_DELTOIDS,
+  'medial deltoids': MuscleType.FRONT_DELTOIDS,
+  'lateral deltoids': MuscleType.FRONT_DELTOIDS,
+  'posterior deltoids': MuscleType.BACK_DELTOIDS,
+  infraspinatus: MuscleType.BACK_DELTOIDS,
+  'teres minor': MuscleType.BACK_DELTOIDS,
+  'teres major': MuscleType.BACK_DELTOIDS,
+  supraspinatus: MuscleType.BACK_DELTOIDS,
+  subscapularis: MuscleType.BACK_DELTOIDS,
+  'biceps brachii': MuscleType.BICEPS,
+  brachialis: MuscleType.BICEPS,
+  brachioradialis: MuscleType.BICEPS,
+  'triceps brachii': MuscleType.TRICEPS,
+  'flexor carpi radialis': MuscleType.FOREARM,
+  anconeus: MuscleType.FOREARM,
+  'gluteus maximus': MuscleType.GLUTEAL,
+  'gluteus medius': MuscleType.GLUTEAL,
+  'gluteus minimus': MuscleType.GLUTEAL,
+  'rectus femoris': MuscleType.QUADRICEPS,
+  'quadriceps femoris': MuscleType.QUADRICEPS,
+  'vastus medialis': MuscleType.QUADRICEPS,
+  'biceps femoris': MuscleType.HAMSTRING,
+  'adductor magnus': MuscleType.ABDUCTOR,
+  'tensor fasciae latae': MuscleType.ABDUCTORS,
+  abductors: MuscleType.ABDUCTORS,
+  gastrocnemius: MuscleType.CALVES,
+  soleus: MuscleType.CALVES,
+  'tibialis anterior': MuscleType.CALVES,
+  'tibialis posterior': MuscleType.CALVES,
+  'extensor hallucis longus': MuscleType.CALVES,
+  'extensor digitorum longus': MuscleType.CALVES,
+} as const;
 
 export const DEFAULT_BODY_COLOR = '#B6BDC3';
 export const DEFAULT_HIGHLIGHTED_COLORS = ['#81b1d9', '#277abf'];

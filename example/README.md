@@ -1,19 +1,13 @@
 # react-body-highlighter example
 
-Small repo for testing local component module before publishing. 
+A minimal Parcel playground that uses the DOM factory to render both views without any framework.
 
-When manual QA passes, the src folder is built and then published using np.
-
-1. Installing
+## Getting started
 
 ```sh
-$ npm install
+npm install
+npm start
+# open http://localhost:1234
 ```
 
-2. Starting
-
-```sh
-$ npm start
-```
-
-3. Go to `localhost:1234` to begin testing
+Use the controls on the page to add sample workouts or reset the board—the highlighter instances are updated in place.

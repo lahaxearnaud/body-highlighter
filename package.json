@@ -8,22 +8,14 @@
     "src"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=18"
   },
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint --fix",
-    "prepare": "tsdx build"
-  },
-  "peerDependencies": {
-    "react": ">=16"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
+    "prepare": "husky install && tsdx build"
   },
   "prettier": {
     "printWidth": 120,
@@ -31,16 +23,15 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "react-body-highlighter",
-  "author": "GV79",
-  "description": "React.js component for highlighting muscles on a body model",
+  "name": "body-highlighter",
+  "author": "alahaxe",
+  "description": "Framework-agnostic library for highlighting muscles on a body model",
   "repository": {
     "type": "git",
-    "url": "https://github.com/GV79/react-body-highlighter"
+    "url": "https://github.com/alahaxe/body-highlighter"
   },
-  "homepage": "https://github.com/GV79/react-body-highlighter",
+  "homepage": "https://github.com/alahaxe/body-highlighter",
   "keywords": [
-    "react",
     "muscle",
     "muscles",
     "body",
@@ -49,19 +40,16 @@
     "highlight",
     "color",
     "svg",
+    "framework-agnostic",
     "fitness",
     "exercise",
     "workout"
   ],
-  "module": "dist/react-body-highlighter.esm.js",
+  "module": "dist/body-highlighter.esm.js",
   "devDependencies": {
-    "@types/react": "^16.14.20",
-    "@types/react-dom": "^16.9.14",
-    "husky": "^4.3.8",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "husky": "^9.1.7",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
-    "typescript": "^3.9.10"
+    "typescript": "^5.9.3"
   }
 }

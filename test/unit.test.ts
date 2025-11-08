@@ -1,6 +1,6 @@
 //@ts-nocheck (sometimes giving partial input object for easier testing)
 
-import { ensure, fillIntensityColor, fillMuscleData } from '../src/utils';
+import { ensure, fillIntensityColor, fillMuscleData, normalizeMuscle } from '../src/utils';
 import { IMuscleData, Muscle, MuscleType } from '../src/component/metadata';
 
 describe('ensure', () => {
@@ -29,6 +29,22 @@ describe('ensure', () => {
     const result = ensure(mainValue, backupValue);
 
     expect(result).toBe(mainValue);
+  });
+});
+
+describe('normalizeMuscle', () => {
+  it('returns canonical muscle when alias is supplied', () => {
+    expect(normalizeMuscle('Trapezius')).toBe(MuscleType.UPPER_BACK);
+    expect(normalizeMuscle(' tensor fasciae latae ')).toBe(MuscleType.ABDUCTORS);
+  });
+
+  it('is case insensitive and accepts canonical input', () => {
+    expect(normalizeMuscle('CHEST')).toBe(MuscleType.CHEST);
+    expect(normalizeMuscle(MuscleType.BICEPS)).toBe(MuscleType.BICEPS);
+  });
+
+  it('returns undefined for unknown muscles', () => {
+    expect(normalizeMuscle('Unknown Muscle')).toBeUndefined();
   });
 });
 
@@ -83,6 +99,11 @@ describe('fillMuscleData', () => {
         muscles: [MuscleType.TRICEPS],
         frequency: 3,
       },
+      {
+        name: 'face pull',
+        muscles: ['Trapezius', 'Rear Delt'], // second entry should be ignored
+        frequency: 1,
+      },
     ];
 
     const EXPECTED_OUTPUT = {
@@ -105,6 +126,7 @@ describe('fillMuscleData', () => {
     expect(muscleObject[MuscleType.CHEST]).toStrictEqual(EXPECTED_OUTPUT[MuscleType.CHEST]);
     expect(muscleObject[MuscleType.TRICEPS]).toStrictEqual(EXPECTED_OUTPUT[MuscleType.TRICEPS]);
     expect(muscleObject[MuscleType.BICEPS]).toStrictEqual(EXPECTED_OUTPUT[MuscleType.BICEPS]);
+    expect(muscleObject[MuscleType.UPPER_BACK].frequency).toBe(1);
 
     expect(muscleObject[MuscleType.FOREARM]).toBeDefined(); // initializes other muscles to default values
   });
