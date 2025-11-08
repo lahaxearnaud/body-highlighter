@@ -14,21 +14,21 @@ jobs:
           node-version: 22.x
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm install
         env:
           CI: true
 
       - name: Lint
-        run: yarn lint
+        run: npx lint
         env:
           CI: true
 
       - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
+        run: npx run test --coverage
         env:
           CI: true
 
       - name: Build
-        run: yarn build
+        run: npx build
         env:
           CI: true
